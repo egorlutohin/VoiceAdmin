@@ -16,9 +16,9 @@ from django.conf.urls import include, url, patterns
 from django.conf import settings
 
 urlpatterns = [
-    url(r'', include('dirlist.urls', namespace='dirlist')),
 	url(r'^%s$' % settings.LOGIN_URL[1:], 'django.contrib.auth.views.login', name='login'),
     url(r'^%s$' % settings.LOGOUT_URL[1:], 'django.contrib.auth.views.logout', {'template_name': 'registration/logout.html'}, name='logout',),    
+    url(r'', include('dirlist.urls', namespace='dirlist')),
 ]
 
 if settings.DEBUG:
