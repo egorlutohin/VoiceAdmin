@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<style type="text/css">
+  thead tr.info th {vertical-align: top;}
+  span.disabled {color: #999999}
+  span.current {font-weight: bold;}
+</style>
+
+<p>&larr; <a href="../..">К списку телефонов</a> / <a href="..">К списку дат записей телефона {{phone_number}}</a></p>
+<h3 style="float: left; margin: 0; padding: 0;">Записи звонков номера {{phone_number}} от {{date}} &nbsp;&nbsp;</h3>
+
+
+
+<table class="table table-bordered table-hover">
+<caption></caption>
+<thead>
+<tr class="info">
+<th>Время записи</th>
+<th>Номер корреспондента</th>
+<th>Запись</th>
+</tr>
+</thead>
+<tbody>
+{% for f in files %}
+<tr class="">
+	<td>{{f.time}}</td>
+	<td>{{f.from_phone}}</td>
+	<td>
+	<audio controls>
+		<source src="./{{f.file}}" />
+	</audio>
+	</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

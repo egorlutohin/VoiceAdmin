@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<style type="text/css">
+  thead tr.info th {vertical-align: top;}
+  span.disabled {color: #999999}
+  span.current {font-weight: bold;}
+</style>
+
+<p>&larr; <a href="..">К списку телефонов</a></p>
+<h3 style="float: left; margin: 0; padding: 0;">Записи звонков номера {{phone_number}} &nbsp;&nbsp;</h3>
+
+
+
+<table class="table table-bordered table-hover">
+<caption></caption>
+<thead>
+<tr class="info">
+<th>Дата разговора</th>
+</tr>
+</thead>
+<tbody>
+{% for dir in dirs %}
+<tr class="">
+	<td><a href="./{{dir}}/">{{dir}}</a></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

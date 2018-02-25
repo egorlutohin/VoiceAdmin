@@ -1,0 +1,21 @@
+from django.conf import settings
+import os
+
+ALL_DIRS = os.listdir(settings.RECORDS_DIR)
+
+def allowed_dirs(*allowed):
+	global ALL_DIRS
+	l = list(set(allowed) & set(ALL_DIRS))
+	l.sort()
+	return l
+
+ALLOWED_USERS = {
+	'egor': {
+		'passwd': 'egor',
+		'dirs': allowed_dirs(*ALL_DIRS)
+	}, 
+	'rest': {
+		'passwd': 'rest',
+		'dirs': allowed_dirs('1000', '1020')
+	},
+}
